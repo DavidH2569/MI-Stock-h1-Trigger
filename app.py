@@ -22,6 +22,16 @@ INDEX_TICKERS = {
     ],
     "FTSE 100": [
         # Add your FTSE 100 tickers here, e.g. 'HSBA.L', 'BP.L', ...
+        'III.L', 'ADM.L', 'AAF.L', 'ALW.L', 'AAL.L', 'ANTO.L', 'AHT.L', 'ABF.L', 'AZN.L', 'AUTO.L',
+        'AV.L',  'BAB.L', 'BA.L',  'BARC.L','BTRW.L','BEZ.L', 'BKG.L','BP.L',  'BATS.L','BT-A.L',
+        'BNZL.L','CNA.L','CCEP.L','CCH.L','CPG.L','CTEC.L','CRDA.L','DCC.L','DGE.L','DPLM.L',
+        'EDV.L','ENT.L','EZJ.L','EXPN.L','FCIT.L','FRES.L','GAW.L','GLEN.L','GSK.L','HLN.L',
+        'HLMA.L','HIK.L','HSX.L','HWDN.L','HSBA.L','IHG.L','IMI.L','IMB.L','INF.L','ICG.L',
+        'IAG.L','ITRK.L','JD.L','KGF.L','LAND.L','LGEN.L','LLOY.L','LMP.L','LSEG.L','MNG.L',
+        'MKS.L','MRO.L','MNDI.L','NG.L',  'NWG.L','NXT.L','PSON.L','PSH.L','PSN.L','PHNX.L',
+        'PCT.L','PRU.L','RKT.L','REL.L','RTO.L','RMV.L','RIO.L','RR.L', 'SGE.L','SBRY.L',
+        'SDR.L','SMT.L','SGRO.L','SVT.L','SHEL.L','SMIN.L','SN.L','SPX.L','SSE.L','STAN.L',
+        'STJ.L','TW.L',  'TSCO.L','ULVR.L','UU.L', 'UTG.L','VOD.L','WEIR.L','WTB.L','WPP.L',
     ],
     "STOXX 50": [
         # Add your EURO STOXX 50 tickers here
