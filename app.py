@@ -35,15 +35,33 @@ INDEX_TICKERS = {
     ],
     "STOXX 50": [
         # Add your EURO STOXX 50 tickers here
+        'ADS.DE', 'ADYEN.AS', 'AD.AS', 'AI.PA', 'AIR.PA', 'ALV.DE', 'ABI.BR', 'ASML.AS', 'CS.PA', 'BAS.DE',
+        'BAYN.DE', 'BBVA.MC', 'SAN.MC', 'BMW.DE', 'BNP.PA', 'BN.PA', 'DB1.DE', 'DHL.DE', 'DTE.DE', 'ENEL.MI',
+        'ENI.MI', 'EL.PA', 'RACE.MI', 'FLTR.L', 'RMS.PA', 'IBE.MC', 'ITX.MC', 'IFX.DE', 'INGA.AS', 'ISP.MI',
+        'KER.PA', 'OR.PA', 'MC.PA', 'MBG.DE', 'MUV2.DE', 'NOKIA.HE', 'NDA-FI.HE', 'RI.PA', 'PRX.AS', 'SAF.PA',
+        'SGO.PA', 'SAN.PA', 'SAP.DE', 'SU.PA', 'SIE.DE', 'STLAM.MI', 'TTE.PA', 'DG.PA', 'UCG.MI', 'VOW.DE',
     ],
     "CAC 40": [
         # Add your CAC 40 tickers here
+        'AC.PA', 'AI.PA', 'AIR.PA', 'MT.AS', 'CS.PA', 'BNP.PA', 'EN.PA', 'CAP.PA', 'CA.PA', 'ACA.PA',
+        'BN.PA', 'DSY.PA', 'EDEN.PA', 'ENGI.PA', 'EL.PA', 'ERF.PA', 'RMS.PA', 'KER.PA', 'OR.PA', 'LR.PA',
+        'MC.PA', 'ML.PA', 'ORA.PA', 'RI.PA', 'PUB.PA', 'RNO.PA', 'SAF.PA', 'SGO.PA', 'SAN.PA', 'SU.PA',
+        'GLE.PA', 'STLA.PA', 'STM.PA', 'TEP.PA', 'HO.PA', 'TTE.PA', 'URW.PA', 'VIE.PA', 'DG.PA', 'VIV.PA'
     ],
     "DAX 40": [
         # Add your DAX 40 tickers here
+        'ADS.DE', 'AIR.PA', 'ALV.DE', 'BAS.DE', 'BAYN.DE', 'BEI.DE', 'BMW.DE', 'BNR.DE', 'CBK.DE', 'CON.DE',
+        '1COV.DE', 'DTG.DE', 'DBK.DE', 'DB1.DE', 'DHL.DE', 'DTE.DE', 'EOAN.DE', 'FRE.DE', 'FME.DE', 'HNR1.DE',
+        'HEI.DE', 'HEN3.DE', 'IFX.DE', 'MBG.DE', 'MRK.DE', 'MTX.DE', 'MUV2.DE', 'P911.DE', 'PAH3.DE', 'QIA.DE',
+        'RHM.DE', 'RWE.DE', 'SAP.DE', 'SRT3.DE', 'SIE.DE', 'ENR.DE', 'SHL.DE', 'SY1.DE', 'VOW3.DE', 'VNA.DE',
+        'ZAL.DE'
     ],
     "NIKKEI 225": [
         # Add your Nikkei 225 tickers here
+        '7203.T', '8306.T', '6758.T', '6501.T', '9984.T', '7974.T', '8316.T', '9983.T', '6861.T', '8035.T',
+        '9432.T', '6098.T', '8766.T', '4519.T', '7011.T', '8058.T', '8001.T', '9434.T', '8411.T', '9433.T',
+        '4063.T', '8031.T', '6857.T', '2914.T', '4502.T', '4568.T', '6503.T', '7741.T', '7267.T', '6702.T',
+        '6701.T', '6902.T', '6367.T', '6146.T', '4661.T', '3382.T', '8002.T', '8725.T', '8053.T', '6301.T'
     ],
 }
 
@@ -135,7 +153,6 @@ def find_h1_triggers(tickers, days, daily_ao):
 def run_analysis(tickers):
     daily_ao = fetch_daily_ao(tickers, DAYS_LOOKBACK)
     negative = [t for t in tickers if t in daily_ao.columns and daily_ao[t].iloc[-1] < 0]
-    # st.write(f"Tickers with latest Daily AO < 0 (of {len(tickers)}): {', '.join(negative)}")
     st.write(f"Tickers with latest Daily AO < 0 ({len(negative)} of {len(tickers)}): {', '.join(negative)}")
     df_triggers = find_h1_triggers(negative, DAYS_LOOKBACK, daily_ao)
 
