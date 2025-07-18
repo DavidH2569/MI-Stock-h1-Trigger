@@ -46,7 +46,7 @@ INDEX_TICKERS = {
         'AC.PA', 'AI.PA', 'AIR.PA', 'MT.AS', 'CS.PA', 'BNP.PA', 'EN.PA', 'CAP.PA', 'CA.PA', 'ACA.PA',
         'BN.PA', 'DSY.PA', 'EDEN.PA', 'ENGI.PA', 'EL.PA', 'ERF.PA', 'RMS.PA', 'KER.PA', 'OR.PA', 'LR.PA',
         'MC.PA', 'ML.PA', 'ORA.PA', 'RI.PA', 'PUB.PA', 'RNO.PA', 'SAF.PA', 'SGO.PA', 'SAN.PA', 'SU.PA',
-        'GLE.PA', 'STLA.PA', 'STM.PA', 'TEP.PA', 'HO.PA', 'TTE.PA', 'URW.PA', 'VIE.PA', 'DG.PA', 'VIV.PA'
+        'GLE.PA', 'STLA.PA', 'STM.PA', 'TEP.PA', 'HO.PA', 'TTE.PA', 'URW.PA', 'VIE.PA', 'DG.PA', 'VIV.PA',
     ],
     "DAX 40": [
         # Add your DAX 40 tickers here
@@ -61,7 +61,7 @@ INDEX_TICKERS = {
         '7203.T', '8306.T', '6758.T', '6501.T', '9984.T', '7974.T', '8316.T', '9983.T', '6861.T', '8035.T',
         '9432.T', '6098.T', '8766.T', '4519.T', '7011.T', '8058.T', '8001.T', '9434.T', '8411.T', '9433.T',
         '4063.T', '8031.T', '6857.T', '2914.T', '4502.T', '4568.T', '6503.T', '7741.T', '7267.T', '6702.T',
-        '6701.T', '6902.T', '6367.T', '6146.T', '4661.T', '3382.T', '8002.T', '8725.T', '8053.T', '6301.T'
+        '6701.T', '6902.T', '6367.T', '6146.T', '4661.T', '3382.T', '8002.T', '8725.T', '8053.T', '6301.T',
     ],
 }
 
