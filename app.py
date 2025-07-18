@@ -125,7 +125,8 @@ def find_h1_triggers(tickers, days, daily_ao):
 def run_analysis(tickers):
     daily_ao = fetch_daily_ao(tickers, DAYS_LOOKBACK)
     negative = [t for t in tickers if t in daily_ao.columns and daily_ao[t].iloc[-1] < 0]
-    st.write(f"Tickers with latest Daily AO < 0 (of {len(tickers)}): {', '.join(negative)}")
+    # st.write(f"Tickers with latest Daily AO < 0 (of {len(tickers)}): {', '.join(negative)}")
+    st.write(f"Tickers with latest Daily AO < 0 ({len(negative)} of {len(tickers)}): {', '.join(negative)}")
     df_triggers = find_h1_triggers(negative, DAYS_LOOKBACK, daily_ao)
 
     if df_triggers.empty:
