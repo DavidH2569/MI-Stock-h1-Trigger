@@ -202,7 +202,7 @@ for idx_name, idx_tickers in INDEX_TICKERS.items():
         run_analysis(idx_tickers)
 
 st.sidebar.markdown("---")
-if st.sidebar.button("Show AO<0 Summary Table"):
+if st.sidebar.button("Show AO<0 Summary"):
     st.header("Daily AO < 0 Count Summary (Last 20 Days)")
     show_ao_summary()
 
