@@ -183,8 +183,17 @@ def show_ao_summary():
     # Keep only the most recent 20 days
     summary = summary.tail(days)
     summary.index.name = "Date"
-    
-    st.dataframe(summary)
+
+    # Convert to Styler to center align
+    styled = summary.style.set_properties(**{
+        'text-align': 'center'
+    }).set_table_styles([{
+        'selector': 'th',
+        'props': [('text-align', 'center')]
+    }])
+
+    st.dataframe(styled, use_container_width=True)
+    # st.dataframe(summary)
     
     csv = summary.to_csv(index=True).encode("utf-8")
     st.download_button(
