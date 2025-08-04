@@ -170,9 +170,39 @@ def run_analysis(tickers):
               .reset_index(drop=True)
         )
 
+def show_ao_summary():
+    summary = pd.DataFrame()
+    days = 20
+
+    for index_name, tickers in INDEX_TICKERS.items():
+        ao = fetch_daily_ao(tickers, DAYS_LOOKBACK)
+        # For each day, count how many tickers had AO < 0
+        count_series = (ao[tickers] < 0).sum(axis=1).rename(index_name)
+        summary[index_name] = count_series
+
+    # Keep only the most recent 20 days
+    summary = summary.tail(days)
+    summary.index.name = "Date"
+    
+    st.dataframe(summary)
+    
+    csv = summary.to_csv(index=True).encode("utf-8")
+    st.download_button(
+        label="Download CSV",
+        data=csv,
+        file_name="ao_negative_summary.csv",
+        mime="text/csv"
+    )
+
 # -- SIDEBAR INDEX BUTTONS --------------------------------------------------
 st.sidebar.header("Run Analysis by Index")
 for idx_name, idx_tickers in INDEX_TICKERS.items():
     if st.sidebar.button(idx_name):
         st.header(f"Results for {idx_name}")
         run_analysis(idx_tickers)
+
+st.sidebar.markdown("---")
+if st.sidebar.button("Show AO<0 Summary Table"):
+    st.header("Daily AO < 0 Count Summary (Last 20 Days)")
+    show_ao_summary()
+
