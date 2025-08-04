@@ -3,7 +3,7 @@ import yfinance as yf
 import pandas as pd
 import datetime
 
-st.set_page_config(page_title="H1 EMA20 Triggers by Index", layout="wide")
+st.set_page_config(page_title="H1 EMA20 Triggers by Index", layout="centered")
 st.title("H1 EMA20 Cross-Up Triggers for Daily AO < 0")
 
 # -- INDEX DEFINITIONS ------------------------------------------------------
