@@ -171,28 +171,52 @@ def run_analysis(tickers):
         )
 
 def show_ao_summary():
-    summary = pd.DataFrame()
+    summary_counts = pd.DataFrame()
     days = 20
 
+    # Collect AO<0 counts per index
     for index_name, tickers in INDEX_TICKERS.items():
         ao = fetch_daily_ao(tickers, DAYS_LOOKBACK)
-        # For each day, count how many tickers had AO < 0
         count_series = (ao[tickers] < 0).sum(axis=1).rename(index_name)
-        summary[index_name] = count_series
+        summary_counts[index_name] = count_series
 
     # Keep only the most recent 20 days
-    summary = summary.tail(days)
-    summary.index.name = "Date"
-    
-    st.dataframe(summary)
-    
-    csv = summary.to_csv(index=True).encode("utf-8")
-    st.download_button(
-        label="Download CSV",
-        data=csv,
-        file_name="ao_negative_summary.csv",
-        mime="text/csv"
-    )
+    summary_counts = summary_counts.tail(days)
+    summary_counts.index.name = "Date"
+
+    # Calculate percentages
+    summary_percent = pd.DataFrame()
+    for index_name, tickers in INDEX_TICKERS.items():
+        total = len(tickers)
+        summary_percent[index_name] = (summary_counts[index_name] / total * 100).round(2)
+
+    summary_percent.index = summary_counts.index  # ensure alignment
+
+    # Layout: side-by-side display
+    col1, col2 = st.columns([1, 1.2])
+
+    with col1:
+        st.markdown("### AO < 0 Counts (Last 20 Days)")
+        styled = summary_counts.style.set_properties(**{
+            'text-align': 'center'
+        }).set_table_styles([{
+            'selector': 'th',
+            'props': [('text-align', 'center')]
+        }])
+        st.dataframe(styled, use_container_width=True)
+
+        csv = summary_counts.to_csv(index=True).encode("utf-8")
+        st.download_button(
+            label="Download CSV (Counts)",
+            data=csv,
+            file_name="ao_negative_counts.csv",
+            mime="text/csv"
+        )
+
+    with col2:
+        st.markdown("### % of Tickers with AO < 0")
+        st.line_chart(summary_percent)
+
 
 # -- SIDEBAR INDEX BUTTONS --------------------------------------------------
 st.sidebar.header("Run Analysis by Index")
