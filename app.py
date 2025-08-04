@@ -172,7 +172,7 @@ def run_analysis(tickers):
 
 def show_ao_summary():
     summary = pd.DataFrame()
-    days = 20
+    days = 60
 
     for index_name, tickers in INDEX_TICKERS.items():
         ao = fetch_daily_ao(tickers, DAYS_LOOKBACK)
